@@ -1,0 +1,29 @@
+doctype html
+head
+    include Includes/header
+body 
+    #loader-wrapper
+        #loader
+        .loader-section.section-left
+        .loader-section.section-right
+    include Includes/navbar
+    .jumbotron.text-center.bg-transparent
+        img.img-fluid(src="/Images/index.png", width="128")
+        h1.display-3 PQ-Formula
+        p.lead
+            img.img-fluid(src="https://wirtschaftslexikon.gabler.de/sites/default/files/styles/keyword/public/images/wilex/74524.png?itok=aygS1Z3F")
+        .d-flex.justify-content-center 
+            form(method="POST", action="/pq/calculate")
+                .input-group.mb-3
+                    span.input-group-text x 
+                        sup 2 
+                    spam.input-group-text +
+                    input.form-control(type="number", placeholder="p", name="p", required, autocomplete="off", size="3")
+                    span.input-group-text x
+                    spam.input-group-text +
+                    input.form-control(type="number", placeholder="q", name="q", required, autocomplete="off", size="4")
+                    span.input-group-text =
+                    spam.input-group-text 0
+                    button.btn.btn-success(type="submit") #[i.fas.fa-calculator]
+
+    include Includes/footer

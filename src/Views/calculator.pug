@@ -1,0 +1,56 @@
+doctype html
+head
+    include Includes/header
+    link(rel="stylesheet", href="/CSS/calculator.css")
+    script(src="/JS/calculator.js", defer)
+body 
+    #loader-wrapper
+        #loader
+        .loader-section.section-left
+        .loader-section.section-right
+    include Includes/navbar
+    .jumbotron.text-center.bg-transparent
+        img.img-fluid(src="/Images/index.png", width="128")
+        h1.display-3 Calculator
+        p.lead Use the buttons below to add input
+        .d-flex.justify-content-center 
+            form(method="POST", action="/calculator/calculate")
+                input.form-control(name="input", id="input", placeholder="Calculator", readonly) 
+                .btn-toolbar
+                    .btn-group(role="group")
+                        button.btn.btn-secondary(type="button", id="1") 1
+                        button.btn.btn-secondary(type="button", id="2") 2
+                        button.btn.btn-secondary(type="button", id="3") 3
+                        button.btn.btn-warning(type="button", id="+") +
+                        button.btn.btn-warning(type="button", id="(") (
+                .btn-toolbar
+                    .btn-group(role="group")
+                        button.btn.btn-secondary(type="button", id="4") 4
+                        button.btn.btn-secondary(type="button", id="5") 5
+                        button.btn.btn-secondary(type="button", id="6") 6
+                        button.btn.btn-warning(type="button", id="-") -
+                        button.btn.btn-warning(type="button", id=")") )
+                .btn-toolbar
+                    .btn-group(role="group") 
+                        button.btn.btn-secondary(type="button", id="7") 7
+                        button.btn.btn-secondary(type="button", id="8") 8
+                        button.btn.btn-secondary(type="button", id="9") 9
+                        button.btn.btn-warning(type="button", id="×") ×
+                        button.btn.btn-warning(type="button", id="√") √
+                .btn-toolbar 
+                    .btn-group 
+                        button.btn.btn-secondary(type="button", id="null") 0
+                        button.btn.btn-warning(type="button", id="÷") ÷
+                        button.btn.btn-warning(type="button", id=",") ,
+                .btn-toolbar 
+                    .btn-group(role="group")
+                        button.btn.btn-danger(type="button", id="deletelast")
+                            i.fas.fa-backspace
+                        button.btn.btn-danger(type="button", href="/calculator", id="delete")
+                            i.fas.fa-trash
+                        button.btn.btn-success(type="submit") 
+                            i.fas.fa-calculator
+                        button.btn.btn-primary(type="button", id="←") ←
+                        button.btn.btn-primary(type="button", id="→") →
+
+    include Includes/footer

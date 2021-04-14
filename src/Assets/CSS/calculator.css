@@ -1,0 +1,13 @@
+button.btn.btn-secondary#null {
+    height: 50px;
+    width: 148px;
+}
+
+button.btn.btn-secondary,
+button.btn.btn-warning,
+button.btn.btn-success,
+button.btn.btn-danger,
+button.btn.btn-primary {
+    height: 50px;
+    width: 50px;
+}

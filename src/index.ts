@@ -13,7 +13,7 @@ app.use(express.static(join(__dirname, "Assets")));
 app.locals.basedir = join(__dirname, "Assets");
 app.use("/", rootRoutes);
 app.all('*', (req, res) => res.render('Errors/404', {
-
+    title: "Not found"
 }));
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`The website is live on http://localhost:${port} !`));

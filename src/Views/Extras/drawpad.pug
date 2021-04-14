@@ -1,0 +1,17 @@
+doctype html
+head
+    include ../Includes/header
+    link(rel="stylesheet", href="/CSS/Extras/drawpad.css")
+    script(src="/JS/Extras/drawpad.js", defer)
+body 
+    #loader-wrapper
+        #loader
+        .loader-section.section-left
+        .loader-section.section-right
+    include ../Includes/navbar
+    .jumbotron.text-center.bg-transparent
+        img.img-fluid(src="/Images/index.png", width="128")
+        h1.display-3 Drawpad
+        p.lead Use your mouse to draw something!
+        canvas(id="myPics" width="560" height="360")
+    include ../Includes/footer

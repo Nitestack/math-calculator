@@ -15,41 +15,34 @@ body
             img.img-fluid(src="https://wirtschaftslexikon.gabler.de/sites/default/files/styles/keyword/public/images/wilex/74524.png?itok=aygS1Z3F")
         if p && q
             if p == q
-                if typeof p != "number"
-                    p.lead The value is
-                    p
-                        if p.minus 
-                            span(style="vertical-align:10px;") -
-                        span.frac 
-                            sup #{p.numerator}
-                            span /
-                            sub #{p.denominator}
-                else 
-                    p.lead The value is #{p}.
+                p.lead The value is
+                p
+                    if p.minus 
+                        span(style="vertical-align:10px;") -
+                    span.frac 
+                        sup #{p.numerator}
+                        span /
+                        sub #{p.denominator || 1}
+                p.lead (#{p.decimal})
             else 
-                if typeof p != "number"
-                    p.lead The first value is
-                    p
-                        if p.minus 
-                            span(style="vertical-align:10px;") -
-                        span.frac 
-                            sup #{p.numerator}
-                            span /
-                            sub #{p.denominator}
-                else 
-                    p.lead The first value is #{p}.
-
-                if typeof q != "number"
-                    p.lead The second value is
-                    p
-                        if q.minus 
-                            span(style="vertical-align:10px;") -
-                        span.frac 
-                            sup #{q.numerator}
-                            span /
-                            sub #{q.denominator}
-                else 
-                    p.lead The second value is #{q}.
+                p.lead The first value is
+                p
+                    if p.minus 
+                        span(style="vertical-align:10px;") -
+                    span.frac 
+                        sup #{p.numerator}
+                        span /
+                        sub #{p.denominator || 1}
+                p.lead (#{p.decimal})
+                p.lead The second value is
+                p
+                    if q.minus 
+                        span(style="vertical-align:10px;") -
+                    span.frac 
+                        sup #{q.numerator}
+                        span /
+                        sub #{q.denominator || 1}
+                p.lead (#{q.decimal})
         else
             p.lead Invalid number(s)!
         a.btn.btn-dark(href='/pq')

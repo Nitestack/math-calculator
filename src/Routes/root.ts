@@ -6,16 +6,45 @@ const router = express.Router();
 router.get("/", (req, res) => res.render("index", {
     title: "Home"
 }));
-
-router.get("/pq", (req, res) => res.render("pq"));
+router.get("/pq", (req, res) => res.render("pq", {
+    title: "PQ Formula"
+}));
+router.get("/calculator", (req, res) => res.render("calculator", {
+    title: "Calculator"
+}));
+router.get("/extras/drawpad", (req, res) => res.render("Extras/drawpad", {
+    title: "Drawpad"
+}));
 
 router.post("/pq/calculate", (req, res) => {
     const p = parseInt(req.body.p);
     const q = parseInt(req.body.q);
     const values = pq(p, q);
+    const fractionOne = decimalToFraction(values.firstValue);
+    const fractionTwo = decimalToFraction(values.secondValue);
     res.render("Results/pq", {
-        p: values?.firstValue ? (values.firstValue.toString().includes(".") ? decimalToFraction(values.firstValue) : values.firstValue) : null,
-        q: values?.secondValue ? (values.secondValue.toString().includes(".") ? decimalToFraction(values.secondValue) : values.secondValue) : null
+        p: values.firstValue && values.secondValue ? {
+            decimal: values.firstValue.toString().replace(/\./g, ","),
+            numerator: fractionOne.numerator,
+            denominator: fractionOne.denominator,
+            minus: fractionOne.minus
+        } : null,
+        q: values.firstValue && values.secondValue ? {
+            decimal: values.secondValue.toString().replace(/\./g, ","),
+            numerator: fractionTwo.numerator,
+            denominator: fractionTwo.denominator,
+            minus: fractionTwo.minus
+        } : null,
+        title: "Calculator"
+    });
+});
+router.post("/calculator/calculate", (req, res) => {
+    const { input } = req.body;
+    res.render("Results/calculator", {
+        value: input != "" ? eval(input.replace(/×/g, "*").replace(/÷/g, "/").replace(/,/g, ".")) : null,
+        error: input == "" ? "There was no input!" : null,
+        input: input,
+        title: "Calculator"
     });
 });
 
@@ -43,9 +72,8 @@ function decimalToFraction(number: number) {
     const x = new Fraction(number);
     const value = x.toFraction();
     return {
-        numerator: value.split("/")[0].replace(/-/g, ""),
-        denominator: value.split("/")[1],
-        decimal: number,
+        numerator: parseInt(value.split("/")[0].replace(/-/g, "")),
+        denominator: parseInt(value.split("/")[1]),
         minus: value.startsWith("-") ? true : false
     }
 };

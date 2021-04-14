@@ -2,8 +2,15 @@ nav.navbar.navbar-expand-xl.navbar-dark.bg-dark.sticky-top
     .container-fluid 
         a.navbar-brand(href='/') 
             img.img-fluid(src="/Images/index.png", width="32")
-            | Math Calculator
+            span  Math Calculator
         #navbar.collapse.navbar-collapse
             ul.navbar-nav
-                li.nav-item.dropdown.position-relative.top-10
-                    a.nav-link(type="button", id="navbarCommands", href='/pq') #[i.fas.fa-code] PQ-Formula
+                li.nav-item.position-relative.top-10
+                    a.nav-link(type="button", href='/calculator') #[i.fas.fa-code] Calculator
+                li.nav-item.position-relative.top-10
+                    a.nav-link(type="button", href='/pq') #[i.fas.fa-code] PQ-Formula
+                li.nav-item.dropdown.position-relative.top-10 
+                    a#navbarDropdownMenuLink.nav-link.dropdown-toggle(role='button', data-bs-toggle='dropdown', aria-expanded='false') Extras
+                    ul.dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
+                        li
+                            a.dropdown-item(href='/extras/drawpad') Drawpad

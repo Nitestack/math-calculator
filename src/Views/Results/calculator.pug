@@ -1,0 +1,20 @@
+doctype html
+head
+    include ../Includes/header
+    link(rel="stylesheet", href="/CSS/calculator.css")
+body 
+    #loader-wrapper
+        #loader
+        .loader-section.section-left
+        .loader-section.section-right
+    include ../Includes/navbar
+    .jumbotron.text-center.bg-transparent
+        img.img-fluid(src="/Images/index.png", width="128")
+        h1.display-3 Calculator
+        if !error
+            p.lead The value of #{input} is #{value.toString().replace(/\./g, ",")}.
+        else 
+            p.lead #{error}
+        a.btn.btn-dark(href='/calculator')
+            span.pl-1 Return to Calculator
+    include ../Includes/footer

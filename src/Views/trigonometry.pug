@@ -1,0 +1,56 @@
+doctype html
+head
+    include Includes/header
+    link(rel="stylesheet", href="/CSS/trigonometry.css")
+    script(src="/JS/trigonometry.js", defer)
+body 
+    #loader-wrapper
+        #loader
+        .loader-section.section-left
+        .loader-section.section-right
+    include Includes/navbar
+    .jumbotron.text-center.bg-transparent
+        img.img-fluid(src="/Images/index.png", width="128")
+        h1.display-3 Trigonometry
+        p.lead Use the input fields in the table to calculate
+        if error 
+            p.lead(style="color: red;") #{errorMessage}
+        .d-flex.justify-content-center 
+            form(method="POST", action="/trigonometry/calculate")
+                p   
+                    span#triangle
+                table.table.table-hover.table-dark
+                    tbody 
+                        tr 
+                            th(scope="row") a
+                            td 
+                                input.form-control(name="a", value=a)
+                        tr  
+                            th(scope="row") b 
+                            td 
+                                input.form-control(name="b", value=b)
+                        tr  
+                            th(scope="row") c 
+                            td 
+                                input.form-control(name="c", value=c)
+                        tr
+                            th(scope="row") α
+                            td
+                                .input-group
+                                    input.form-control(type="number", max="90", min="0", name="alpha", value=alpha)
+                                    span.input-group-text °
+                        tr  
+                            th(scope="row") β
+                            td
+                                .input-group
+                                    input.form-control(type="number", max="90", min="0", name="beta", value=beta)
+                                    span.input-group-text °
+                        tr 
+                            th(scope="row") γ
+                            td
+                                .input-group
+                                    input.form-control(type="number", max="90", min="0", name="gamma", value=gamma)
+                                    span.input-group-text °
+                button.btn.btn-success(type="submit") #[i.fas.fa-calculator]
+
+    include Includes/footer

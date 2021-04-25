@@ -41,3 +41,7 @@ function drawLine(context, x1, y1, x2, y2) {
     context.stroke();
     context.closePath();
 }
+
+document.getElementById("delete").onclick = function () {
+    myPics.setAttribute("style", "background-color: white;");
+};

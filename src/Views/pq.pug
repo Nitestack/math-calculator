@@ -2,6 +2,7 @@ doctype html
 head
     include Includes/header
     link(rel="stylesheet", href="/CSS/pq.css")
+    script(src="/JS/pq.js", defer)
 body 
     #loader-wrapper
         #loader
@@ -13,18 +14,53 @@ body
         h1.display-3 PQ-Formula
         p.lead
             img.img-fluid(src="https://wirtschaftslexikon.gabler.de/sites/default/files/styles/keyword/public/images/wilex/74524.png?itok=aygS1Z3F")
+        if error 
+            p.lead(id="calculatorDisplay", style="color: red;") Invalid input!
+        else 
+            p(id="calculatorDisplay")
         .d-flex.justify-content-center 
             form(method="POST", action="/pq/calculate")
                 .input-group.mb-3
                     span.input-group-text x 
                         sup 2 
-                    spam.input-group-text +
-                    input.form-control(type="number", placeholder="p", name="p", required, autocomplete="off", size="3")
+                    span.input-group-text +
+                    input.form-control(type="text", placeholder="p", name="p", id="p", required, autocomplete="off", size="3", value=pInput)
                     span.input-group-text x
-                    spam.input-group-text +
-                    input.form-control(type="number", placeholder="q", name="q", required, autocomplete="off", size="4")
+                    span.input-group-text +
+                    input.form-control(type="text", placeholder="q", name="q", id="q", required, autocomplete="off", size="4", value=qInput)
                     span.input-group-text =
-                    spam.input-group-text 0
+                    span.input-group-text 0
                     button.btn.btn-success(type="submit") #[i.fas.fa-calculator]
+        if p && q
+            p
+                if p.numerator == q.numerator && p.denominator == q.denominator
+                    p.lead The value is
+                    p
+                        if p.minus 
+                            span(style="vertical-align:10px;") -
+                        span.frac 
+                            sup #{p.numerator}
+                            span /
+                            sub #{p.denominator || 1}
+                    p.lead (#{p.decimal})
+                else 
+                    p.lead The first value is
+                    p
+                        if p.minus 
+                            span(style="vertical-align:10px;") -
+                        span.frac 
+                            sup #{p.numerator}
+                            span /
+                            sub #{p.denominator || 1}
+                    p.lead (#{p.decimal})
+                    p.lead The second value is
+                    p
+                        if q.minus 
+                            span(style="vertical-align:10px;") -
+                        span.frac 
+                            sup #{q.numerator}
+                            span /
+                            sub #{q.denominator || 1}
+                    p.lead (#{q.decimal})
 
     include Includes/footer

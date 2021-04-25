@@ -1,23 +1,31 @@
 {
-	"compilerOptions": {
-		"baseUrl": "src",
-		"paths": {
-			"@root/*": ["*"],
-			"@routes/*": ["Routes/*"]
-		},
-		"lib": ["ESNext", "DOM"],
-		"module": "commonjs",
-		"moduleResolution": "node",
-		"target": "ESNext",
-		"sourceMap": true,
-		"esModuleInterop": true,
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
-		"skipLibCheck": true,
-		"skipDefaultLibCheck": true,
-		"resolveJsonModule": true,
-		"outDir": "Build"
-	},
-	"include": ["src"],
-	"exclude": ["node_modules", "**/*.spec.ts"]
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@root/*": ["*"],
+      "@routes/*": ["Routes/*"],
+      "@build/*": ["Build/*"],
+      "@constants/*": ["Constants/"]
+    },
+    "lib": ["ESNext", "DOM"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "resolveJsonModule": true,
+    "outDir": "src/Build"
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "./src/Routes/POST.ts",
+	  "./src/Routes/GET.ts",
+    "./src/index.ts"
+  ]
 }

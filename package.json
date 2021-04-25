@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev --respawn --transpile-only --poll ./src/index.ts"
+    "start": "tsc & ts-node-dev --respawn --transpile-only --poll ./src/index.ts"
   },
   "keywords": [],
   "author": "HydraNhani",
   "license": "ISC",
   "dependencies": {
     "@types/module-alias": "^2.0.0",
+    "canvas": "^2.7.0",
     "express": "^4.17.1",
     "fraction.js": "^4.0.13",
     "pug": "^3.0.2"
@@ -27,6 +28,8 @@
   },
   "_moduleAliases": {
     "@root": "src",
-    "@routes": "src/Routes"
+    "@routes": "src/Routes",
+    "@constants": "src/Constants",
+    "@build": "src/Build"
   }
 }

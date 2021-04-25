@@ -1,0 +1,41 @@
+doctype html
+head
+    include Includes/header
+    link(rel="stylesheet", href="/CSS/trigonometry.css")
+    script(src="/JS/trigonometry.js", defer)
+body 
+    #loader-wrapper
+        #loader
+        .loader-section.section-left
+        .loader-section.section-right
+    include Includes/navbar
+    .jumbotron.text-center.bg-transparent
+        img.img-fluid(src="/Images/index.png", width="128")
+        h1.display-3 Pythagorean Theorem
+        p.lead Use the input fields to provide a and b
+        p 
+            img(src="https://mongarcia.files.wordpress.com/2011/05/pythag_thm.gif")
+        if error 
+            p.lead(style="color: red;") #{errorMessage}
+        - var plus = plusOrMinus == "+" ? true : false
+        .d-flex.justify-content-center 
+            form(method="POST", action="/pythagoreantheorem/calculate")
+                .input-group
+                    input.form-control(type="text", placeholder="a/c", name="a", required, autocomplete="off", value=aInput)
+                    span.input-group-text 
+                        sup 2 
+                    select.form-control(name="plusOrMinus")
+                        option(value="+", selected=plus) +
+                        option(value="-", selected=!plus) -
+                    input.form-control(type="text", placeholder="a/b", name="b", required, autocomplete="off", value=bInput)
+                    span.input-group-text 
+                        sup 2 
+                    span.input-group-text =
+                    if c
+                        span.input-group-text #{c}
+                    else 
+                        span.input-group-text a/b/c 
+                            sup 2
+                    button.btn.btn-success(type="submit") #[i.fas.fa-calculator]
+
+    include Includes/footer

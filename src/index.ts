@@ -10,9 +10,9 @@ const app = express();
 app.set('views', join(__dirname, "Views"));
 app.set('view engine', 'pug');
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(join(__dirname, "Build", "Assets")));
-console.log(__dirname);
-app.locals.basedir = join(__dirname, "Assets");
+app.use(express.static(join(__dirname, "Build")));
+app.use("/nodeModules", express.static(join(__dirname, "..", "node_modules")));
+app.locals.basedir = join(__dirname, "Build");
 app.use("/", getRoutes, postRoutes);
 app.all('*', (req, res) => res.render('Errors/404', {
     title: "Not found"

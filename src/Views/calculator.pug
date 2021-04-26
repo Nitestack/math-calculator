@@ -13,11 +13,10 @@ body
         img.img-fluid(src="/Images/index.png", width="128")
         h1.display-3 Calculator
         p.lead Use the buttons below to add input
-        if error 
-            p.lead(style="color: red;") #{errorMessage}
-        .d-flex.justify-content-center 
-            form(method="POST", action="/calculator/calculate")
-                input.form-control(name="input", id="input", placeholder="Calculator", readonly, value=input) 
+        p.lead(id="error", style="color: red;")
+        .d-flex.justify-content-center
+            form
+                input.form-control(name="input", id="input", placeholder="Calculator", readonly) 
                 .btn-toolbar
                     .btn-group(role="group")
                         button.btn.btn-secondary(type="button", id="1") 1
@@ -50,11 +49,10 @@ body
                             i.fas.fa-backspace
                         button.btn.btn-danger(type="button", href="/calculator", id="delete")
                             i.fas.fa-trash
-                        button.btn.btn-success(type="submit") 
+                        button.btn.btn-success(type="button", id="submitButton") 
                             i.fas.fa-calculator
                         button.btn.btn-primary(type="button", id="←") ←
                         button.btn.btn-primary(type="button", id="→") →
-        if !error && input && value
-            p.lead The value of #{input} is #{value.toString().replace(/\./g, ",")}.
+        p.lead(id="answer")
 
     include Includes/footer

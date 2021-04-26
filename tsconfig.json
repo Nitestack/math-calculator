@@ -4,8 +4,7 @@
     "paths": {
       "@root/*": ["*"],
       "@routes/*": ["Routes/*"],
-      "@build/*": ["Build/*"],
-      "@constants/*": ["Constants/"]
+      "@build/*": ["Build/*"]
     },
     "lib": ["ESNext", "DOM"],
     "module": "commonjs",
@@ -18,14 +17,8 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "resolveJsonModule": true,
-    "outDir": "src/Build"
+    "outDir": "src/Build/JS"
   },
-  "include": ["src"],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts",
-    "./src/Routes/POST.ts",
-	  "./src/Routes/GET.ts",
-    "./src/index.ts"
-  ]
+  "include": ["src/TS"],
+  "exclude": ["node_modules"]
 }

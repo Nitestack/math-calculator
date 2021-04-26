@@ -14,12 +14,9 @@ body
         h1.display-3 PQ-Formula
         p.lead
             img.img-fluid(src="https://wirtschaftslexikon.gabler.de/sites/default/files/styles/keyword/public/images/wilex/74524.png?itok=aygS1Z3F")
-        if error 
-            p.lead(id="calculatorDisplay", style="color: red;") Invalid input!
-        else 
-            p(id="calculatorDisplay")
+        p.lead(id="error", style="color: red;") 
         .d-flex.justify-content-center 
-            form(method="POST", action="/pq/calculate")
+            form
                 .input-group.mb-3
                     span.input-group-text x 
                         sup 2 
@@ -30,37 +27,7 @@ body
                     input.form-control(type="text", placeholder="q", name="q", id="q", required, autocomplete="off", size="4", value=qInput)
                     span.input-group-text =
                     span.input-group-text 0
-                    button.btn.btn-success(type="submit") #[i.fas.fa-calculator]
-        if p && q
-            p
-                if p.numerator == q.numerator && p.denominator == q.denominator
-                    p.lead The value is
-                    p
-                        if p.minus 
-                            span(style="vertical-align:10px;") -
-                        span.frac 
-                            sup #{p.numerator}
-                            span /
-                            sub #{p.denominator || 1}
-                    p.lead (#{p.decimal})
-                else 
-                    p.lead The first value is
-                    p
-                        if p.minus 
-                            span(style="vertical-align:10px;") -
-                        span.frac 
-                            sup #{p.numerator}
-                            span /
-                            sub #{p.denominator || 1}
-                    p.lead (#{p.decimal})
-                    p.lead The second value is
-                    p
-                        if q.minus 
-                            span(style="vertical-align:10px;") -
-                        span.frac 
-                            sup #{q.numerator}
-                            span /
-                            sub #{q.denominator || 1}
-                    p.lead (#{q.decimal})
+                    button.btn.btn-success(type="button", id="submitButton") #[i.fas.fa-calculator]
+        p(id="answer")
 
     include Includes/footer

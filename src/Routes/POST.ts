@@ -1,6 +1,5 @@
 import express from "express";
 import Canvas from "canvas";
-import { pq, decimalToFraction } from "@constants/index";
 
 const router = express.Router();
 
@@ -99,28 +98,6 @@ router.post("/pq/calculate", (req, res) => {
         pInput: p,
         qInput: q
     });
-});
-router.post("/calculator/calculate", (req, res) => {
-    try {
-        const { input } = req.body;
-        if (!input) return res.render("calculator", {
-            title: "Calculator",
-            error: true,
-            errorMessage: "There was no input!"
-        });
-        const value = eval(input.replace(/×/g, "*").replace(/÷/g, "/").replace(/,/g, "."));
-        res.render("calculator", {
-            value: value,
-            input: input,
-            title: "Calculator"
-        });
-    } catch {
-        res.render("calculator", {
-            title: "Calculator",
-            error: true,
-            errorMessage: "Invalid input!"
-        });
-    };
 });
 
 router.post("/pythagoreantheorem/calculate", (req, res) => {
